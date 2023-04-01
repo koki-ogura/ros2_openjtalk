@@ -15,7 +15,7 @@ python3 -m pip install -U pyopenjtalk
 
 ## clone ros2_openjtalk
 ```.sh
-cd ~/dev_ws
+cd ~/dev_ws/src
 git clone https://github.com/koki-ogura/ros2_openjtalk.git
 ```
 
