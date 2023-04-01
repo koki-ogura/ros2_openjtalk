@@ -1,4 +1,5 @@
 # OpenJTalk ROS 2 managed node
+How to Speak Japanese in ROS2! Japanese Text-to-Speech Node using OpenJTalk
 
 ## log
 ```.sh
