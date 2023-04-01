@@ -13,6 +13,12 @@ python3 -m pip install -U pyaudio
 python3 -m pip install -U pyopenjtalk
 ```
 
+## clone ros2_openjtalk
+```.sh
+cd ~/dev_ws
+git clone https://github.com/koki-ogura/ros2_openjtalk.git
+```
+
 ## build ros2_openjtalk
 ```.sh
 cd ~/dev_ws
