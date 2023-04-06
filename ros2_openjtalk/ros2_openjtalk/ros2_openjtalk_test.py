@@ -24,10 +24,11 @@ class OpenJTalkHelper(Node):
             raise TechmagicLotusGripperError(f'{name} rejected')
         return res
 
-    def talk(self, text):
-        self.get_logger().info(f'talk({text})')
+    def talk(self, message, speed):
+        self.get_logger().info(f'talk({message}, {speed})')
         req = Talk.Request()
-        req.message = text
+        req.message = message
+        req.speed = speed
         res = self.call_service(req, self._talk_cli, 'talk')
         return res.success
 
@@ -44,9 +45,9 @@ def main(args=None):
     executor.add_node(talker)
 
     try:
-        talker.talk('こんばんは')
+        talker.talk('こんばんは', 0.5)
         spin_sleep(executor, 1.0)
-        talker.talk('お元気ですか？')
+        talker.talk('お元気ですか？', 1.5)
         spin_sleep(executor, 1.0)
         talker.destroy_node()
 

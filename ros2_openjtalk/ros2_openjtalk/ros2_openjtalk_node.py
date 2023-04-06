@@ -30,11 +30,15 @@ class BaseTalk():
         self._top += len
         return (cdata, pyaudio.paContinue)
 
-    def text2wav16(self, text):
+    def text2wav16(self, text, speed):
         return (None, None)
 
-    def talk(self, text):
-        self._data, sr = self.text2wav16(text)
+    def talk(self, text, speed):
+        if speed < 0.1:
+            speed = 0.1
+        elif speed > 2.0:
+            speed = 2.0
+        self._data, sr = self.text2wav16(text, speed)
         self._length = len(self._data)
         self._top = 0
         stream = self._p.open(format=pyaudio.paInt16,
@@ -48,8 +52,8 @@ class BaseTalk():
         stream.close()
 
 class OpenJTalk(BaseTalk):
-    def text2wav16(self, text):
-        x, sr = pyopenjtalk.tts(text)
+    def text2wav16(self, text, speed):
+        x, sr = pyopenjtalk.tts(text, speed)
         return (x.astype(np.int16), sr)
 
 #---------------------------------------------------------------------------------------
@@ -101,9 +105,10 @@ class OpenJTalkNode(Node):
 
     #-----------------------------------------------------------------------------
     def talk_callback(self, request, response):
-        msg = request.message
-        self.get_logger().info(f'talk({msg})')
-        self._talker.talk(msg)
+        message = request.message
+        speed = request.speed
+        self.get_logger().info(f'talk({message},{speed})')
+        self._talker.talk(message, speed)
         response.success = True
         return response
 

@@ -3,6 +3,7 @@ How to Speak Japanese in ROS2! Japanese Text-to-Speech Node using OpenJTalk
 
 ## log
 ```.sh
+2023/04/07 append speed param to ros2_openjtalk_interfaces/Talk
 2023/04/01 first commit (device_name param is not implemant now)
 ```
 
@@ -35,9 +36,9 @@ ros2 launch ros2_openjtalk bringup.launch.py
 ```
 Don't worry about the message that ALSA is not set up on your system.
 
-## test via command line
+## test via command line (0.1 <= speed <= 2.0)
 ```.sh
-ros2 service call /ros2_openjtalk_node/talk ros2_openjtalk_interfaces/Talk '{message: こんにちは世界}'
+ros2 service call /ros2_openjtalk_node/talk ros2_openjtalk_interfaces/Talk '{message: こんにちは世界, speed: 0.5}'
 ```
 
 ## run ros2_openjtalk test program (can run other pc)
