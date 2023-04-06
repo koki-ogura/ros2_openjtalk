@@ -107,7 +107,7 @@ class OpenJTalkNode(Node):
     def talk_callback(self, request, response):
         message = request.message
         speed = request.speed
-        self.get_logger().info(f'talk({message},{speed})')
+        self.get_logger().info(f'talk({message}, {speed})')
         self._talker.talk(message, speed)
         response.success = True
         return response
