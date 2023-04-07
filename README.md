@@ -47,9 +47,15 @@ ros2 run ros2_openjtalk ros2_openjtalk_test
 ```
 
 ## service
-### Talk
+### node
 ```.py
+/ros2_openjtalk_node/talk
+```
+### interface
+```.py
+# ros2_openjtalk_interfaces/Talk
 string message
+float64 speed # 0.1~2.0
 ---
 bool success
 ```
