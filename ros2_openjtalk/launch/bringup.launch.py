@@ -107,13 +107,13 @@ def generate_launch_description():
     )
     
     #ld.add_action(from_unconfigured_to_inactive)
-    #ld.add_action(from_inactive_to_active)
+    ld.add_action(from_inactive_to_active)
     #ld.add_action(from_active_to_inactive)
     #ld.add_action(from_inactive_to_finalized)
     ld.add_action(from_finalized_to_exit)
     
     ld.add_action(node)
     ld.add_action(to_inactive)
-    ld.add_action(to_active)
+    #ld.add_action(to_active)
 
     return ld
